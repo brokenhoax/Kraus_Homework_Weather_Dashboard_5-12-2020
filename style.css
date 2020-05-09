@@ -26,7 +26,7 @@ body {
 .navigbar div {
     background: black;
     color: whitesmoke;
-    padding: 1em;
+    padding: 2rem;
     height: auto;
 }
 
@@ -76,5 +76,13 @@ footer {
 }
 
 div .display-moment {
+    color: greenyellow;
+}
+
+#dayZero {
+    color: greenyellow;
+}
+
+#day-one, #day-two, #day-three, #day-four, #day-five {
     color: greenyellow;
 }
