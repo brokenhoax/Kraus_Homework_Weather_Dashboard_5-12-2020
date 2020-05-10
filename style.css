@@ -35,7 +35,8 @@ body {
     grid-template-columns: 2fr 8fr;
     /* grid-gap: 1em; */
     grid-column-gap: 1em;
-    grid-auto-rows: minmax(300px, auto);
+    grid-auto-rows: minmax(250px, auto);
+    font-size: 1.4rem;
 }
 
 .wrapper div {
@@ -77,6 +78,7 @@ footer {
 
 div .display-moment {
     color: greenyellow;
+    font-size: 1.5rem;
 }
 
 #dayZero {
@@ -85,4 +87,5 @@ div .display-moment {
 
 #day-one, #day-two, #day-three, #day-four, #day-five {
     color: greenyellow;
+    font-size: 1.5rem;
 }

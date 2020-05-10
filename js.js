@@ -56,6 +56,9 @@ $( document ).ready(function() {
         $(".today-wind").text("Wind Speed: " + response.wind.speed + " MPH");
         $(".today-humidity").text("Humidity: " + response.main.humidity + " %");
 
+      // Display Weather Icons
+        $("#display-icon").append("<i class='owf owf-" + response.weather[0].id + " owf-4x'" + "></i>");
+
         // // Convert the temp to fahrenheit    
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         console.log(tempF);
@@ -70,7 +73,7 @@ $( document ).ready(function() {
         console.log("Temperature (F): " + tempF);
     });
 
-    //Tomorrow API Call
+    //Next Four Day API Call
     $.ajax({    
         url: queryTwoURL,      
         method: "GET"
@@ -81,24 +84,61 @@ $( document ).ready(function() {
         console.log(queryURL);
 
         // Log the resulting object
-        console.log('******* :' + JSON.parse(JSON.stringify(response)));
+        console.log('!!!!!!!!!! :' + JSON.parse(JSON.stringify(response)));
 
         // // Transfer content to HTML
-        $(".city").html("<h1>" + response.city.name + "</h1>");
-        $(".wind").text("Wind Speed: " + response.list[0].wind.speed + " MPH");
-        $(".humidity").text("Humidity: " + response.list[0].main.humidity + " %");
+        for (i = 0; i <= 40; i += 8) {
+
+            $("#wind-"+[i]).text("Wind Speed: " +  response.list[i].wind.speed  + " MPH");
+            $("#humidity-"+[i]).text("Humidity: " + response.list[i].main.humidity + " %");
+
+            // Display Weather Icons
+            // $("#display-icon").append("<i class='owf owf-" + response.weather[i].id + " owf-4x'" + "></i>");
+
+            // // Convert the temp to fahrenheit    
+            var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
+            console.log("Day: " + [i] + " Temp: " + tempF);
+
+            // add temp content to html
+            $(".temp").text("Temperature (K) " + response.list[i].main.temp);
+            $("#tempF-"+[i]).text("Temperature: " + tempF.toFixed(2) + " (°F)");
+
+            // Log the data in the console as well
+            console.log("Wind Speed: " + response.list[i].wind.speed);
+            console.log("Humidity: " + response.list[i].main.humidity);
+            console.log("Temperature (F): " + tempF);
+        };
+    });
+
+    //Last Day API Call
+    $.ajax({    
+        url: queryTwoURL,      
+        method: "GET"
+    })
+        .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log('!!!!!!!!!! :' + JSON.parse(JSON.stringify(response)));
+
+        // // Transfer content to HTML
+    
+        $("#wind-"+[39]).text("Wind Speed: " + response.list[39].wind.speed + " MPH");
+        $("#humidity-"+[39]).text("Humidity: " + response.list[39].main.humidity + " %");
 
         // // Convert the temp to fahrenheit    
-        var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
-        console.log(tempF);
+        var tempF = (response.list[39].main.temp - 273.15) * 1.80 + 32;
+        console.log("Day: " + [39] + " Temp: " + tempF);
 
         // add temp content to html
-        $(".temp").text("Temperature (K) " + response.list[0].main.temp);
-        $(".tempF").text("Temperature: " + tempF.toFixed(2) + " (°F)");
+        $(".temp").text("Temperature (K) " + response.list[39].main.temp);
+        $("#tempF-"+[39]).text("Temperature: " + tempF.toFixed(2) + " (°F)");
 
         // Log the data in the console as well
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
+        console.log("Wind Speed: " + response.list[39].wind.speed);
+        console.log("Humidity: " + response.list[39].main.humidity);
         console.log("Temperature (F): " + tempF);
     });
 });
