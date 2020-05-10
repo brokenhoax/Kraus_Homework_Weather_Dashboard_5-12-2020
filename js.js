@@ -3,7 +3,7 @@ $( document ).ready(function() {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Chicago,IL,US&appid=" + APIKey; 
     var queryTwoURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=Chicago,IL,US&appid=" + APIKey; 
     
-    //Current Date & Time
+    //Show Current Date & Time
     console.log(moment());
 
     function dayZero() {
@@ -15,50 +15,34 @@ $( document ).ready(function() {
         }
     }
 
-    function dayOne() {
+    //Show future Date & Time
+    function showDay() {
         var dayOneMoment = moment().add(1, 'days').calendar();
         var dayOneShow = document.getElementById('day-one');
-        console.log('******* :' + dayOneShow);
-        dayOneShow.innerHTML = dayOneMoment;
-    }
-
-    function dayTwo() {
         var dayTwoMoment = moment().add(2, 'days').calendar();
         var dayTwoShow = document.getElementById('day-two');
-        dayTwoShow.innerHTML = dayTwoMoment;
-    }
-
-    function dayThree() {
         var dayThreeMoment = moment().add(3, 'days').calendar();
         var dayThreeShow = document.getElementById('day-three');
-        dayThreeShow.innerHTML = dayThreeMoment;
-    }
-
-    function dayFour() {
         var dayFourMoment = moment().add(4, 'days').calendar();
         var dayFourShow = document.getElementById('day-four');
+        var dayFiveMoment = moment().add(5, 'days').calendar();
+        var dayFiveShow = document.getElementById('day-five');
+        dayOneShow.innerHTML = dayOneMoment;
+        dayTwoShow.innerHTML = dayTwoMoment;
+        dayThreeShow.innerHTML = dayThreeMoment;
         dayFourShow.innerHTML = dayFourMoment;
+        dayFiveShow.innerHTML = dayFiveMoment;
+        console.log('******* :' + dayOneShow);
     }
 
-    function dayFive() {
-        var daySixMoment = moment().add(5, 'days').calendar();
-        var daySixShow = document.getElementById('day-five');
-        daySixShow.innerHTML = daySixMoment;
-    }
-
-    dayZero()
-    dayOne()
-    dayTwo()
-    dayThree()
-    dayFour()
-    dayFive()
+    dayZero();
+    showDay();
 
     //Today API Call
     $.ajax({    
         url: queryURL,      
         method: "GET"
     })
-
         .then(function(response) {
 
         // Log the queryURL
@@ -68,11 +52,9 @@ $( document ).ready(function() {
         console.log('******* :' + JSON.parse(JSON.stringify(response)));
 
         // // Transfer content to HTML
-        // $(".city").html("<h1>" + response.name + "<div " + "class=\'display-moment\'>Test" + "</div>" + "</h1>");
         $(".today-city").html("<h1>" + response.name + "</h1>");
         $(".today-wind").text("Wind Speed: " + response.wind.speed + " MPH");
         $(".today-humidity").text("Humidity: " + response.main.humidity + " %");
-
 
         // // Convert the temp to fahrenheit    
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -93,7 +75,6 @@ $( document ).ready(function() {
         url: queryTwoURL,      
         method: "GET"
     })
-
         .then(function(response) {
 
         // Log the queryURL
@@ -103,11 +84,9 @@ $( document ).ready(function() {
         console.log('******* :' + JSON.parse(JSON.stringify(response)));
 
         // // Transfer content to HTML
-        // $(".city").html("<h1>" + response.name + "<div " + "class=\'display-moment\'>Test" + "</div>" + "</h1>");
         $(".city").html("<h1>" + response.city.name + "</h1>");
         $(".wind").text("Wind Speed: " + response.list[0].wind.speed + " MPH");
         $(".humidity").text("Humidity: " + response.list[0].main.humidity + " %");
-
 
         // // Convert the temp to fahrenheit    
         var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
