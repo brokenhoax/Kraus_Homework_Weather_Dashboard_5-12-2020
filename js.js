@@ -1,31 +1,30 @@
 $( document ).ready(function() {
+    const todoInput = document.querySelector('.todo-input');
+    const todoButton = document.querySelector('.todo-button');
+    const todoList = document.querySelector('.todo-list');
     var APIKey = "db417286ffd067d079c3760d5405b45d"
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Chicago,IL,US&appid=" + APIKey; 
     var queryTwoURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=Chicago,IL,US&appid=" + APIKey; 
     
     //Show Current Date & Time
-    console.log(moment());
 
-    function dayZero() {
-        var NowMoment = moment().add(0  , 'days').calendar();
-        var eDisplayMoment = document.getElementsByClassName('display-moment');
-        for (i = 0; i < eDisplayMoment.length; i++) {   
-            console.log('~~~~~~ :' + JSON.stringify(eDisplayMoment[""+i]))
-            eDisplayMoment[""+i].innerHTML = NowMoment;
-        }
+    function dayToday() {
+        var NowMoment = moment().format("MMM Do YYYY");
+        var eDisplayMoment = document.getElementById('display-moment');
+        eDisplayMoment.innerHTML = NowMoment;    
     }
 
     //Show future Date & Time
-    function showDay() {
-        var dayOneMoment = moment().add(1, 'days').calendar();
+    function dayFuture() {
+        var dayOneMoment = moment().add(1, 'days').format('MMM Do');
         var dayOneShow = document.getElementById('day-one');
-        var dayTwoMoment = moment().add(2, 'days').calendar();
+        var dayTwoMoment = moment().add(2, 'days').format('MMM Do');
         var dayTwoShow = document.getElementById('day-two');
-        var dayThreeMoment = moment().add(3, 'days').calendar();
+        var dayThreeMoment = moment().add(3, 'days').format('MMM Do');
         var dayThreeShow = document.getElementById('day-three');
-        var dayFourMoment = moment().add(4, 'days').calendar();
+        var dayFourMoment = moment().add(4, 'days').format('MMM Do');
         var dayFourShow = document.getElementById('day-four');
-        var dayFiveMoment = moment().add(5, 'days').calendar();
+        var dayFiveMoment = moment().add(5, 'days').format('MMM Do');
         var dayFiveShow = document.getElementById('day-five');
         dayOneShow.innerHTML = dayOneMoment;
         dayTwoShow.innerHTML = dayTwoMoment;
@@ -35,8 +34,52 @@ $( document ).ready(function() {
         console.log('******* :' + dayOneShow);
     }
 
-    dayZero();
-    showDay();
+    dayToday();
+    dayFuture();
+
+
+    //Event Listeners
+    todoButton.addEventListener('click', addToDo);
+    todoList.addEventListener('click', deleteCheck);
+
+    //User Search & Store
+
+    function addToDo (event) {
+        // Prevent form from submitting
+        event.preventDefault();
+        console.log('hello')
+        //ToDo DIV
+        const todoDiv = document.createElement('div');
+        //Add Class to todoDiv
+        todoDiv.classList.add('todo')
+        //Create LI
+        const newTodo = document.createElement('li');
+        newTodo.innerText = todoInput.value;
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+        //Append To List
+        todoList.appendChild(todoDiv);
+        //Clear ToDo Input Value
+        todoInput.value = "";
+    }
+
+    // Delete ToDo from Quick Task List
+    function deleteCheck(e){
+        const item = e.target;
+        console.log(e.target)
+        //Delete Todo
+        if(item.classList[0] === 'trash-btn'){
+            const todoToRemove = item.parentElement;
+            todoToRemove.remove();
+        }
+        //Check Mark Complete
+        if(item.classList [0] === 'complete-btn') {
+            const completedTodo = item.parentElement;
+            completedTodo.classList.toggle('completed');
+        }
+    }
+
+
 
     //Today API Call
     $.ajax({    

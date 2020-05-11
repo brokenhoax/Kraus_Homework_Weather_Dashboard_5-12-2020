@@ -7,6 +7,12 @@
         href="https://fonts.googleapis.com/css?family=Poppins&display=swap" 
         rel="stylesheet"
     />
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" 
+    integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" 
+    crossorigin="anonymous"
+    />
     <link href="./owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
     <link 
         href="style.css" 
@@ -24,25 +30,27 @@
 
     <div class="wrapper">
         <div class="nested-row">
-            <div>Lorem</div>    
-            <div>Lorem</div>
-            <div>Lorem</div>
-            <div>Lorem</div>
-            <div>Lorem</div>
-            <div>Lorem</div>
-            <div>Lorem</div>
-            <div>Lorem</div>
+            <form>
+              <input type="text" placeholder="Search by 'City, State'" class="todo-input">
+              <button class="todo-button" type="submit">
+                <i class="fas fa-plus-square"></i>
+              </button>
+            </form>
+            <div class="todo-container">
+              <ul class="todo-list">
+              </ul>
+            </div>
         </div>
         <div id="today-weather">
             <div class="today-city"></div>
+            <div id="display-moment"></div>
             <div id="display-icon"></div>
-            <div class="display-moment"></div>
             <div class="today-tempF"></div>
             <div class="today-wind"></div>
             <div class="today-humidity"></div>
         </div>
         <div>
-            Text.
+            <i>Placesaver.....</i>
         </div>
         <div class="nested-col">
             <div class ="card">
