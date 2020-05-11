@@ -57,6 +57,7 @@ $( document ).ready(function() {
         $(".today-humidity").text("Humidity: " + response.main.humidity + " %");
 
       // Display Weather Icons
+      // Icon sample => <i class="owf owf-200"></i>
         $("#display-icon").append("<i class='owf owf-" + response.weather[0].id + " owf-4x'" + "></i>");
 
         // // Convert the temp to fahrenheit    
@@ -81,7 +82,7 @@ $( document ).ready(function() {
         .then(function(response) {
 
         // Log the queryURL
-        console.log(queryURL);
+        console.log(queryTwoURL);
 
         // Log the resulting object
         console.log('!!!!!!!!!! :' + JSON.parse(JSON.stringify(response)));
@@ -89,11 +90,11 @@ $( document ).ready(function() {
         // // Transfer content to HTML
         for (i = 0; i <= 40; i += 8) {
 
-            $("#wind-"+[i]).text("Wind Speed: " +  response.list[i].wind.speed  + " MPH");
+            $("#wind-"+[i]).text("Wind Speed: " + response.list[i].wind.speed + " MPH");
             $("#humidity-"+[i]).text("Humidity: " + response.list[i].main.humidity + " %");
 
             // Display Weather Icons
-            // $("#display-icon").append("<i class='owf owf-" + response.weather[i].id + " owf-4x'" + "></i>");
+            $("#show-me-"+[i]).append("<i class='owf owf-" + response.list[i].weather[0].id + " owf-4x'" + "></i>");
 
             // // Convert the temp to fahrenheit    
             var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
@@ -118,15 +119,17 @@ $( document ).ready(function() {
         .then(function(response) {
 
         // Log the queryURL
-        console.log(queryURL);
+        console.log(queryTwoURL);
 
         // Log the resulting object
-        console.log('!!!!!!!!!! :' + JSON.parse(JSON.stringify(response)));
+        console.log('!!!!!!!!!! :' + JSON.stringify((response)));
 
         // // Transfer content to HTML
-    
         $("#wind-"+[39]).text("Wind Speed: " + response.list[39].wind.speed + " MPH");
         $("#humidity-"+[39]).text("Humidity: " + response.list[39].main.humidity + " %");
+
+        // Display Weather Icons
+        $("#show-me-"+[39]).append("<i class='owf owf-" + response.list[39].weather[0].id + " owf-4x'" + "></i>");
 
         // // Convert the temp to fahrenheit    
         var tempF = (response.list[39].main.temp - 273.15) * 1.80 + 32;
