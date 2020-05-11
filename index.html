@@ -27,9 +27,8 @@
     </div>
 </div>
 <body>
-
     <div class="wrapper">
-        <div class="nested-row">
+        <div class="nested-row box-1">
             <form>
               <input type="text" placeholder="Search by 'City, State'" class="todo-input">
               <button class="todo-button" type="submit">
@@ -41,18 +40,25 @@
               </ul>
             </div>
         </div>
-        <div id="today-weather">
-            <div class="today-city"></div>
-            <div id="display-moment"></div>
-            <div id="display-icon"></div>
-            <div class="today-tempF"></div>
-            <div class="today-wind"></div>
-            <div class="today-humidity"></div>
+        <div class="nested-col box-2">
+            <div class ="card">
+                <div class="today-city"></div>
+                <div id="display-moment"></div>
+            </div>
+            <div class ="card-x">
+                <div class="today-tempF"></div>
+            </div>
+            <div class ="card-x">
+                <div class="today-wind"></div>
+            </div>
+            <div class ="card-x">
+                <div class="today-humidity"></div>
+            </div>
+            <div class ="card-x">
+                <div id="display-icon"></div>
+            </div>
         </div>
-        <div>
-            <i>Placesaver.....</i>
-        </div>
-        <div class="nested-col">
+        <div class="nested-col box-3">
             <div class ="card">
                 <div id="day-one"></div>
                 <div id="tempF-8"></div>  

@@ -37,7 +37,6 @@ $( document ).ready(function() {
     dayToday();
     dayFuture();
 
-
     //Event Listeners
     todoButton.addEventListener('click', addToDo);
     todoList.addEventListener('click', deleteCheck);
@@ -80,7 +79,6 @@ $( document ).ready(function() {
     }
 
 
-
     //Today API Call
     $.ajax({    
         url: queryURL,      
@@ -101,7 +99,7 @@ $( document ).ready(function() {
 
       // Display Weather Icons
       // Icon sample => <i class="owf owf-200"></i>
-        $("#display-icon").append("<i class='owf owf-" + response.weather[0].id + " owf-4x'" + "></i>");
+        $("#display-icon").append("<i class='owf owf-" + response.weather[0].id + " owf-5x'" + "></i>");
 
         // // Convert the temp to fahrenheit    
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -137,7 +135,7 @@ $( document ).ready(function() {
             $("#humidity-"+[i]).text("Humidity: " + response.list[i].main.humidity + " %");
 
             // Display Weather Icons
-            $("#show-me-"+[i]).append("<i class='owf owf-" + response.list[i].weather[0].id + " owf-4x'" + "></i>");
+            $("#show-me-"+[i]).append("<i class='owf owf-" + response.list[i].weather[0].id + " owf-3x'" + "></i>");
 
             // // Convert the temp to fahrenheit    
             var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
@@ -172,7 +170,7 @@ $( document ).ready(function() {
         $("#humidity-"+[39]).text("Humidity: " + response.list[39].main.humidity + " %");
 
         // Display Weather Icons
-        $("#show-me-"+[39]).append("<i class='owf owf-" + response.list[39].weather[0].id + " owf-4x'" + "></i>");
+        $("#show-me-"+[39]).append("<i class='owf owf-" + response.list[39].weather[0].id + " owf-3x'" + "></i>");
 
         // // Convert the temp to fahrenheit    
         var tempF = (response.list[39].main.temp - 273.15) * 1.80 + 32;
