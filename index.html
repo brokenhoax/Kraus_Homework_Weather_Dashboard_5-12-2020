@@ -30,18 +30,20 @@
     <div class="wrapper">
         <div class="nested-row box-1">
             <form>
-              <input type="text" placeholder="Search by 'City, State'" class="todo-input">
-              <button class="todo-button" type="submit">
-                <i class="fas fa-plus-square"></i>
-              </button>
+              <input type="text" placeholder="Search by 'City, State'" id="search-input" value="">
+                <button class="search-button" type="submit">
+                    <i class="fas fa-plus-square"></i>
+                </button>
             </form>
-            <div class="todo-container">
-              <ul class="todo-list">
-              </ul>
+        </div>
+        <div class="box-2">
+            <div class="search-container">
+                <ul class="search-list">
+                </ul>
             </div>
         </div>
-        <div class="nested-col box-2">
-            <div class ="card">
+        <div class="nested-col box-3">
+            <div class ="card-x">
                 <div class="today-city"></div>
                 <div id="display-moment"></div>
             </div>
@@ -58,7 +60,7 @@
                 <div id="display-icon"></div>
             </div>
         </div>
-        <div class="nested-col box-3">
+        <div class="nested-col box-4">
             <div class ="card">
                 <div id="day-one"></div>
                 <div id="tempF-8"></div>  

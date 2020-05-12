@@ -7,8 +7,9 @@
 
 body {
     background: black;
+
 }
-  
+
 .navigbar {
     /* grid-gap: 1em; */
     display: grid;
@@ -31,14 +32,16 @@ body {
     height: auto;
 }
 
+
 .wrapper {
     display: grid;
     grid-template-columns: 2fr 8fr;
+    grid-template-rows: auto;
     /* grid-gap: 1em; */
     /* grid-column-gap: 1em; */
     /* grid-row-gap: .5em; */
-    grid-auto-rows: minmax(250px, auto);
     font-size: 1.4rem;
+    overflow: hidden;
 }
 
 .wrapper div {
@@ -49,16 +52,11 @@ body {
     margin-bottom: .5em;
 }
 
-footer {
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: whitesmoke;
-}
-  
-#sticky-footer {
-    flex-shrink: none;
-    position: relative; 
+form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nested-row {
@@ -84,10 +82,17 @@ div #display-moment {
     font-size: 1.5rem;
 }
 
+form {
+    align-self: top;
+}
+
+form h1 {
+    padding: 1rem;
+}
+
 form input, form button {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 1rem;
-    margin: 1rem;
     border: none;
     background: whitesmoke;
 }
@@ -104,59 +109,19 @@ form button:hover {
     color: greenyellow;
 }
 
-.todo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.todo-list {
-    min-width: 30%;
-    list-style: none;
-}
-
-.todo {
-    margin: 0.5rem;
-    background: whitesmoke;
-    color: black;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: auto;
-}
-
-.todo li {
-    flex: 1;
-}
-
-.todo-item {
-    padding: 0rem 0.5rem; 
-}
-
-.fa-trash, .fa-check {
-    pointer-events: none;
-}
-
-.completed {
-    text-decoration: line-through;
-    opacity: .5;
-}
-
 .box-1 {
     grid-column: 1/2;
-    grid-row: 1/3;
+    grid-row: 1/2;
 }
 
 .box-2 {
-    grid-column: 2/4;
-    grid-row: 1/2;
-    margin-right: 10px;
+    grid-column: 1/2;
+    grid-row: 2/3;
 }
 
 .box-3 {
     grid-column: 2/4;
-    grid-row: 2/3;
+    grid-row: 1/2;
     margin-right: 10px;
 }
 
@@ -175,3 +140,31 @@ form button:hover {
 .today-tempF {
     color: #4f2196;
 }
+
+footer {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: whitesmoke;
+}
+  
+#sticky-footer {
+    flex-shrink: none;
+    position: relative; 
+}
+
+
+.searched-location {
+
+}
+
+.search-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+.search-list {
+    min-width: 30%;
+    list-style: none;
+  }
