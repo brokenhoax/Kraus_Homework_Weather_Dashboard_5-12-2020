@@ -2,12 +2,11 @@ $( document ).ready(function() {
     const searchButton = document.querySelector('.search-button');
     const searchList = document.querySelector('.search-list');
     var inputValue = document.getElementById('search-input');
-    var keyValue = 0;
+    var keyNum = 0;
     var APIKey = "db417286ffd067d079c3760d5405b45d"
-        // var EXAMPLE = "https://api.openweathermap.org/data/2.5/weather?" + "q=Chicago,IL,US&appid=" + APIKey; 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + inputValue.value + ",US&appid=" + APIKey;
-    console.log(queryURL);
-    var queryTwoURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=" + inputValue.value + ",US&appid=" + APIKey; 
+    // var EXAMPLE = "https://api.openweathermap.org/data/2.5/weather?" + "q=Chicago,IL,US&appid=" + APIKey; 
+    // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + inputValue.value + ",US&appid=" + APIKey;
+    // var queryTwoURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=" + inputValue.value + ",US&appid=" + APIKey; 
 
     //Show Current Date & Time
 
@@ -46,11 +45,11 @@ $( document ).ready(function() {
 
     //User Search & Store
 
-    $(".search-button").click(function recordSearch() {
-        //Increment KeyValue Variable
-        keyValue++;
-        console.log("keyValue value = :" + keyValue);
-        const key = keyValue;
+    $('.search-button').click(function recordSearch() {
+        //Increment keyNum Variable
+        keyNum++;
+        console.log("keyNum value = :" + keyNum);
+        const key = keyNum;
         const value = inputValue.value;
         console.log(key);
         console.log(value);
@@ -62,24 +61,24 @@ $( document ).ready(function() {
         
         // Prevent form from submitting
         event.preventDefault();
-        //Create LI
-        const newSearch = document.createElement('li');
+
+        //Create Button
+        const newSearch = document.createElement('button');
         newSearch.innerText = value;
-        newSearch.classList.add('searched-location');
+        newSearch.classList.add("prior-search");
+        newSearch.setAttribute('type', "submit");
+        newSearch.setAttribute('id',keyNum);
         searchList.appendChild(newSearch);
-        //Clear Search Input Value
-        // inputValue.value = "";
-
 
         ///////////////////////////////////Work Bench///////////////////////////////////
-        // // var first = recordSearch(queryURL);
-        // // console.log(first)
-
-        // var recentSearch = localStorage.getItem(hourSeven.innerText)
-        // console.log(toDo3);
+        var recentSearch = localStorage.getItem(keyNum)
+        console.log(recentSearch);
         
-        // document.getElementById("row-3-todo").value = recentSearch;
+        document.getElementById(keyNum).value = recentSearch;
         ///////////////////////////////////Work Bench///////////////////////////////////
+
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + inputValue.value + ",US&appid=" + APIKey;
+        var queryTwoURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=" + inputValue.value + ",US&appid=" + APIKey; 
 
         //Today API Call
         $.ajax({    
@@ -187,5 +186,8 @@ $( document ).ready(function() {
             console.log("Humidity: " + response.list[39].main.humidity);
             console.log("Temperature (F): " + tempF);
         });
+        
+        //Clear Search Input Value
+        inputValue.value = "";
     });
 });

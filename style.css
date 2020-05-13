@@ -7,7 +7,6 @@
 
 body {
     background: black;
-
 }
 
 .navigbar {
@@ -95,6 +94,7 @@ form input, form button {
     font-size: 1rem;
     border: none;
     background: whitesmoke;
+    color: black;   
 }
 
 form button {
@@ -168,3 +168,7 @@ footer {
     min-width: 30%;
     list-style: none;
   }
+
+::placeholder {
+    color: black;
+}
